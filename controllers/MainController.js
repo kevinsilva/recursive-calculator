@@ -1,10 +1,10 @@
-// import NumpadController from './NumpadController';
+import NumpadController from './NumpadController.js';
 
 export default class MainController {
   constructor(object) {
-    // if (!(object.numpadController instanceof NumpadController)) {
-    //   throw new TypeError('must be an instance of NumpadController');
-    // }
+    if(!(object.numpadController instanceof NumpadController)) {
+      throw new TypeError('must be an instance of NumpadController');
+    }
     this.displayController = object.displayController;
     this.numpadController = object.numpadController;
     this.calculator = object.calculator;
@@ -12,7 +12,7 @@ export default class MainController {
   }
 
   addToDisplay(value) {
-    switch (value) {
+    switch(value) {
       case 'S':
         this.currentCalculation = this.calculator.runCommand(value);
         break;
@@ -20,7 +20,7 @@ export default class MainController {
         this.currentCalculation = this.calculator.runCommand(value);
         break;
       case 'CE':
-        if (this.displayController.secondary) return;
+        if(this.displayController.secondary) return;
         this.displayController.secondary = this.currentCalculation;
         this.currentCalculation = this.calculator.runCommand(
           'CE ' + this.currentCalculation
@@ -32,11 +32,11 @@ export default class MainController {
         // this.currentCalculation = this.currentCalculation.slice(0, -1);
         break;
       case '.':
-        if (this.currentCalculation.includes('.')) return;
+        if(this.currentCalculation.includes('.')) return;
         this.currentCalculation += value;
         break;
       default:
-        if (this.displayController.secondary) return;
+        if(this.displayController.secondary) return;
         this.currentCalculation += value;
         break;
     }
