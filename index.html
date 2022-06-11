@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Recursive Calculator</title>
+</head>
+
+<body>
+    <!-- <h1 class="title">Recursive Calculator</h1> -->
+    <div class="calculator">
+        <div class="case">
+            <div class="case__header">
+                <img src="./img/logo.png" alt="logo" class="logo" />
+            </div>
+            <div class="case__display">
+                <div class="display">
+                    <div class="display__secondary"></div>
+                    <div class="display__main"></div>
+                </div>
+            </div>
+            <div class="case__numpad">
+                <div class="numpad">
+                    <div class="numpad__main">
+                        <button id="exit" class="key-main bg-red">S<span class="icon icon--off"></span></button>
+                        <button id="help" class="key-main bg-green">A<span class="icon icon--on"></span></button>
+                    </div>
+                    <div class="numpad__extra">
+                        <button id="clearAll" class="key text-small">C</button>
+                        <button id="open" class="key text-small">(</button>
+                        <button id="close" class="key text-small">)</button>
+                        <!-- <button id="close" class="key">)</button> -->
+                        <!-- <button class="delete">DEL</button> -->
+                    </div>
+                    <div class="numpad__secondary">
+                        <!-- class="key key--operator  -->
+                        <button id="exp" class="key text-small">EXP</button>
+                        <button id="log" class="key text-small">LOG</button>
+                        <button id="sin" class="key text-small">SIN</button>
+                        <button id="cos" class="key text-small">COS</button>
+                        <button id="ceil" class="key text-small"> CEIL </button>
+                        <button id="divide" class="key"> / </button>
+                        <button id="seven" class="key">7</button>
+                        <button id="eight" class="key">8</button>
+                        <button id="nine" class="key">9</button>
+                        <button id="floor" class="key text-small">FLOOR</button>
+                        <!-- <div id="floor" class="key key--pill text-small">FLR</div> -->
+                        <button id="multiply" class="key">*</button>
+                        <button id="four" class="key">4 </button>
+                        <button id="five" class="key">5</button>
+                        <button id="six" class="key">6</button>
+                        <button id="round" class="key text-small">ROUND</button>
+                        <button id="subtract" class="key">-</button>
+                        <button id="one" class="key">1</button>
+                        <button id="two" class="key">2</button>
+                        <button id="three" class="key">3</button>
+                        <button id="abs" class="key text-small">ABS</button>
+                        <button id="add" class="key">+</button>
+                        <button id="zero" class="key">0</button>
+                        <button id="dot" class="key">.</button>
+                        <button id="equal" class="key bg-yellow">=</button>
+                        <button id="space" class="key text-small">SPACE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" defer>
+        import CommandsManager from './commands-manager/CommandsManager.js';
+        import singlePassEvaluator from './calc-engine/single-pass/single-pass.js';
+        import MemoryManager from './memory-manager/MemoryManager.js';
+        import DisplayController from './controllers/DisplayController.js';
+        import NumpadController from './controllers/NumpadController.js';
+        import MainController from './controllers/MainController.js';
+
+        const memoryManager = new MemoryManager();
+        const calcEngine = singlePassEvaluator;
+        const calculator = new CommandsManager(memoryManager, calcEngine);
+
+        const secondaryDisplay = document.querySelector('.display__secondary');
+        const mainDisplay = document.querySelector('.display__main');
+
+        const numpad = {
+            expID: 'exp',
+            logID: 'log',
+            sinID: 'sin',
+            cosID: 'cos',
+            ceilID: 'ceil',
+            floorID: 'floor',
+            roundID: 'round',
+            absID: 'abs',
+            addID: 'add',
+            subtractID: 'subtract',
+            divideID: 'divide',
+            multiplyID: 'multiply',
+            oneID: 'one',
+            twoID: 'two',
+            threeID: 'three',
+            fourID: 'four',
+            fiveID: 'five',
+            sixID: 'six',
+            sevenID: 'seven',
+            eightID: 'eight',
+            nineID: 'nine',
+            zeroID: 'zero',
+            clearAllID: 'clearAll',
+            openID: 'open',
+            closeID: 'close',
+            exitID: 'exit',
+            helpID: 'help',
+            dotID: 'dot',
+            equalID: 'equal',
+            spaceID: 'space',
+        };
+
+        const displayController = new DisplayController({
+            elMain: mainDisplay,
+            elSecondary: secondaryDisplay,
+        });
+        const numpadController = new NumpadController(numpad, (value) =>
+            mainController.addToDisplay(value)
+        );
+
+        const mainController = new MainController({
+            displayController: displayController,
+            numpadController: numpadController,
+            calculator: calculator,
+        });
+
+      // clearAllKey.addEventListener("click", () => {
+      //     displayController.clear();
+      //     // interfaceCalc.clear();
+      //     // interfaceCalc.render();
+      // });
+
+      // equalKey.addEventListener("click", () => {
+      //     interfaceCalc.runCalculator(
+      //         "CE " + interfaceCalc.currentCalculation
+      //     );
+      //     interfaceCalc.render();
+      // });
+
+      // spaceKey.addEventListener("click", () => {
+      //     interfaceCalc.add(" ");
+      //     interfaceCalc.render();
+      // });
+
+      // dotKey.addEventListener("click", () => {
+      //     if (interfaceCalc.currentCalculation.includes(".")) return;
+      //     interfaceCalc.add(dotKey.innerText);
+      //     interfaceCalc.render();
+      // });
+
+      // exitKey.addEventListener("click", () => {
+      //     interfaceCalc.runCalculator("S");
+      //     interfaceCalc.previousCalculation = "";
+      //     interfaceCalc.render();
+      // });
+
+      // helpKey.addEventListener("click", () => {
+      //     interfaceCalc.runCalculator("A");
+      //     interfaceCalc.previousCalculation = "";
+      //     interfaceCalc.render();
+      // });
+    </script>
+</body>
+
+</html>
+<!-- // Esquecer memória pois não foi pensada tendo em conta a componente gráfica.
+// Em compensação, permitir teclas de parênteses
+// O visor deve mostrar todos os caracteres que vamos escrevendo
+// Criar um backspace para apagar últimos caracteres
+// Todos os operadores devem aparecer no visor
+// Acrescentar texto de referência sobre a operacionalidade em NPR
+// parênteses necessários somente para cálculo de expressões complexas: + 1 2 (funcionaria)
+// modo gráfico permite excepções para cálculo de linha anterior. 
+// botão de igual = executa a expressão, depois mostra resultado
+// ao mostrar resultado da expresão, coloca expressão calculada em cima e em tamanho pequeno
+// colocar parênteses automáticos nos operadores unários (?)
+// ter botão clear para limpar tudo
+// adicionar tecla de espaço -->
+<!-- // const run = () => {
+    //     const input = prompt("Insira o comando: ");
+    //     const output = calculator.runCommand(input);
+    //     alert(output);
+
+    //     if (output !== "Aplicação terminada. Até à próxima.") {
+    //         run();
+    //     } else {
+    //         stop();
+    //     }
+    // };
+
+    // alert("Bem-Vindo à Calculadora Recursiva.\nPara lista de comandos prima 'A'");
+    // run(); -->

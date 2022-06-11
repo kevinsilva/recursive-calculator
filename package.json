@@ -1,0 +1,27 @@
+{
+  "name": "recursive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest --env=jsdom"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": ["@babel/plugin-transform-modules-commonjs"]
+      }
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+    "jest": "^27.4.4"
+  },
+  "dependencies": {
+    "jest-environment-jsdom": "^27.1.0"
+  }
+}
