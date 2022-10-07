@@ -3,10 +3,10 @@ import {
   UNARY_OPERATORS,
   BAD_EXP,
   toNumber,
-} from "../../../utilities.js";
+} from "../../utilities.js";
 
 import Stack from "./stack.js";
-import { validator } from "./validator.js";
+import { validator } from "../validator/validator.js";
 
 const singlePassEvaluator = (expression) => {
   const stack = new Stack();

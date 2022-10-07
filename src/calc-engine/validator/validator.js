@@ -1,53 +1,58 @@
-import { splitExpression, BINARY_OPERATORS, UNARY_OPERATORS, OPERATOR_MAP } from "../../../utilities.js"
+import {
+  splitExpression,
+  BINARY_OPERATORS,
+  UNARY_OPERATORS,
+  OPERATOR_MAP,
+} from "../../utilities.js";
 
-const balanceValidator = expression => {
+const balanceValidator = (expression) => {
   const parentheses = expression.replace(/[^\(\)]/g, "");
   let openCount = 0;
   let closeCount = 0;
 
-  for(const character of parentheses) {
-    if(character === "(") {
+  for (const character of parentheses) {
+    if (character === "(") {
       openCount++;
-    } else if(character === ")" && closeCount < openCount) {
-      closeCount++
+    } else if (character === ")" && closeCount < openCount) {
+      closeCount++;
     } else {
       return false;
     }
   }
 
   return openCount - closeCount === 0;
-}
+};
 
-const countValidator = expression => {
-  const noParens = expression.replace(/[\(\)]/g, "").split(' ');
+const countValidator = (expression) => {
+  const noParens = expression.replace(/[\(\)]/g, "").split(" ");
   const onlyParens = expression.replace(/[^\(\)]/g, "");
-  let minParens = 0
+  let minParens = 0;
 
-  noParens.forEach(char => {
-    if(char in UNARY_OPERATORS) {
-      minParens += 2
-    } else if(char in BINARY_OPERATORS) {
-      minParens += 4
+  noParens.forEach((char) => {
+    if (char in UNARY_OPERATORS) {
+      minParens += 2;
+    } else if (char in BINARY_OPERATORS) {
+      minParens += 4;
     }
-  })
+  });
 
-  return onlyParens.length === minParens ? true : false
-}
+  return onlyParens.length === minParens ? true : false;
+};
 
-const orderValidator = expression => {
+const orderValidator = (expression) => {
   const splitted = splitExpression(expression);
 
-  for(const [index, char] of splitted.entries()) {
+  for (const [index, char] of splitted.entries()) {
     let nextChar = splitted[index + 1];
-    if(char === "(") {
-      if(!OPERATOR_MAP.hasOwnProperty(nextChar) && isNaN(nextChar)) {
-        return false
+    if (char === "(") {
+      if (!OPERATOR_MAP.hasOwnProperty(nextChar) && isNaN(nextChar)) {
+        return false;
       }
     }
 
-    if(char === ")") {
-      if(nextChar !== "(" && nextChar !== ")" && index < splitted.length - 1) {
-        return false
+    if (char === ")") {
+      if (nextChar !== "(" && nextChar !== ")" && index < splitted.length - 1) {
+        return false;
       }
     }
 
@@ -61,22 +66,20 @@ const orderValidator = expression => {
     // de uma expressão mal definida, que é partilhada pelas outras verificações, e por isso, ao comentar,
     // a expressão continua mal definida porque essa verificação é feita pelas outras funções. Se comentar a linha
     // juntamente com as outras verificações, o teste falha.
-
   }
 
   return true;
-}
+};
 
-
-
-const validator = expression => {
-  return orderValidator(expression) &&
+const validator = (expression) => {
+  return (
+    orderValidator(expression) &&
     countValidator(expression) &&
-    balanceValidator(expression);
-}
+    balanceValidator(expression)
+  );
+};
 
 export { validator, orderValidator };
-
 
 // VALIDATOR
 // const test1 = "+ (+ (-1) (5)) (5)";

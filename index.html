@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <!-- <h1 class="title">Recursive Calculator</h1> -->
+  <h1 class="title">Polish Notation Calculator</h1>
   <div class="calculator">
     <div class="case">
       <div class="case__header">
@@ -69,66 +69,66 @@
     </div>
   </div>
   <script type="module" defer>
-        import CommandsManager from './commands-manager/CommandsManager.js';
-        import singlePassEvaluator from './calc-engine/parser/single-pass/single-pass.js';
-        import MemoryManager from './memory-manager/MemoryManager.js';
-        import DisplayController from './controllers/DisplayController.js';
-        import NumpadController from './controllers/NumpadController.js';
-        import MainController from './controllers/MainController.js';
+    import CommandsManager from './commands-manager/CommandsManager.js';
+    import singlePassEvaluator from "./calc-engine/single-pass/single-pass.js";
+    import MemoryManager from './memory-manager/MemoryManager.js';
+    import DisplayController from './controllers/DisplayController.js';
+    import NumpadController from './controllers/NumpadController.js';
+    import MainController from './controllers/MainController.js';
 
-        const memoryManager = new MemoryManager();
-        const calcEngine = singlePassEvaluator;
-        const calculator = new CommandsManager(memoryManager, calcEngine);
+    const memoryManager = new MemoryManager();
+    const calcEngine = singlePassEvaluator;
+    const calculator = new CommandsManager(memoryManager, calcEngine);
 
-        const secondaryDisplay = document.querySelector('.display__secondary');
-        const mainDisplay = document.querySelector('.display__main');
+    const secondaryDisplay = document.querySelector('.display__secondary');
+    const mainDisplay = document.querySelector('.display__main');
 
-        const numpad = {
-            expID: 'exp',
-            logID: 'log',
-            sinID: 'sin',
-            cosID: 'cos',
-            ceilID: 'ceil',
-            floorID: 'floor',
-            roundID: 'round',
-            absID: 'abs',
-            addID: 'add',
-            subtractID: 'subtract',
-            divideID: 'divide',
-            multiplyID: 'multiply',
-            oneID: 'one',
-            twoID: 'two',
-            threeID: 'three',
-            fourID: 'four',
-            fiveID: 'five',
-            sixID: 'six',
-            sevenID: 'seven',
-            eightID: 'eight',
-            nineID: 'nine',
-            zeroID: 'zero',
-            clearAllID: 'clearAll',
-            openID: 'open',
-            closeID: 'close',
-            exitID: 'exit',
-            helpID: 'help',
-            dotID: 'dot',
-            equalID: 'equal',
-            spaceID: 'space',
-        };
+    const numpad = {
+      expID: 'exp',
+      logID: 'log',
+      sinID: 'sin',
+      cosID: 'cos',
+      ceilID: 'ceil',
+      floorID: 'floor',
+      roundID: 'round',
+      absID: 'abs',
+      addID: 'add',
+      subtractID: 'subtract',
+      divideID: 'divide',
+      multiplyID: 'multiply',
+      oneID: 'one',
+      twoID: 'two',
+      threeID: 'three',
+      fourID: 'four',
+      fiveID: 'five',
+      sixID: 'six',
+      sevenID: 'seven',
+      eightID: 'eight',
+      nineID: 'nine',
+      zeroID: 'zero',
+      clearAllID: 'clearAll',
+      openID: 'open',
+      closeID: 'close',
+      exitID: 'exit',
+      helpID: 'help',
+      dotID: 'dot',
+      equalID: 'equal',
+      spaceID: 'space',
+    };
 
-        const displayController = new DisplayController({
-            elMain: mainDisplay,
-            elSecondary: secondaryDisplay,
-        });
-        const numpadController = new NumpadController(numpad, (value) =>
-            mainController.addToDisplay(value)
-        );
+    const displayController = new DisplayController({
+      elMain: mainDisplay,
+      elSecondary: secondaryDisplay,
+    });
+    const numpadController = new NumpadController(numpad, (value) =>
+      mainController.addToDisplay(value)
+    );
 
-        const mainController = new MainController({
-            displayController: displayController,
-            numpadController: numpadController,
-            calculator: calculator,
-        });
+    const mainController = new MainController({
+      displayController: displayController,
+      numpadController: numpadController,
+      calculator: calculator,
+    });
 
       // clearAllKey.addEventListener("click", () => {
       //     displayController.clear();
@@ -165,7 +165,7 @@
       //     interfaceCalc.previousCalculation = "";
       //     interfaceCalc.render();
       // });
-    </script>
+  </script>
 </body>
 
 </html>

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300;0,600;1,400&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -25,18 +27,43 @@ body {
     #f7f7f7,
     rgba(0, 0, 0, 0.253)
   );
-  font-family: sans-serif;
+  font-family: "Merriweather Sans", sans-serif;
   font-size: 2rem;
   width: 100vw;
   height: 100vh;
 }
 
-.calculator {
+.title {
+  font-family: "Merriweather Sans", sans-serif;
+  font-size: 2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+/* .calculator {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30%;
+
+  .case {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  padding: 4rem 3rem;
+  width: 34rem;
+  height: 62rem;
+}
+} */
+
+.calculator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .case {
@@ -46,8 +73,8 @@ body {
   border-bottom-right-radius: 2rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   padding: 4rem 3rem;
-  width: 34rem;
-  height: 62rem;
+  min-width: 34rem;
+  min-height: 62rem;
 }
 
 .case__header {
@@ -162,7 +189,7 @@ body {
 }
 
 .key-main::after {
-  content: '';
+  content: "";
   display: block;
   position: relative;
   top: -0.1rem;

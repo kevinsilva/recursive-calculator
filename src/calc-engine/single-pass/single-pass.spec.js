@@ -1,5 +1,5 @@
 import singlePassEvaluator from "./single-pass.js";
-import { roundResult } from "../../../utilities.js";
+import { roundResult } from "../../utilities.js";
 
 describe("single pass evaluator", () => {
   describe("parses and evaluates unary expressions", () => {
