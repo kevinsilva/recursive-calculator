@@ -49,7 +49,7 @@ describe("single pass evaluator", () => {
       expect(singlePassEvaluator("+ (4) (+ (1) (5))")).toEqual(10);
     });
 
-    it("parses and evaluated recursive nesting operands", () => {
+    it("parses and evaluates recursive nesting operands", () => {
       expect(singlePassEvaluator("+ (+ (-1) (5)) (- (10) (8))")).toEqual(6);
     });
   });
