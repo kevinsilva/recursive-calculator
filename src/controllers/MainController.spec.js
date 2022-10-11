@@ -1,22 +1,14 @@
-import MainController from './MainController.js';
-import NumpadController from './NumpadController.js';
-jest.mock('./NumpadController.js');
+import MainController from "./MainController.js";
+import NumpadController from "./NumpadController.js";
+jest.mock("./NumpadController.js");
 
-//main-controller
-// o utilizador clica numa tecla
-// -> numpad controller determina o valor
-// -> main controller passa para o
-// -> display-controller actualiza main display
-
-// main-controller
-//   recebe input do numpad e passa para o display
-
-describe('Main Controller', () => {
+describe("Main Controller", () => {
   function initElements() {
     return {
       displayController: {
-        main: '',
-        secondary: '',
+        main: "",
+        secondary: "",
+        clear: jest.fn(),
       },
       numpadController: new NumpadController(),
       // { buttons: {}, onButtonClick: jest.fn() },
@@ -24,7 +16,7 @@ describe('Main Controller', () => {
     };
   }
 
-  it('initializes with a display controller, a numpad controller, and a calculator', () => {
+  it("initializes with a display controller, a numpad controller, and a calculator", () => {
     const mainControl = new MainController(initElements());
 
     expect(mainControl.displayController).not.toBeUndefined();
@@ -32,20 +24,49 @@ describe('Main Controller', () => {
     expect(mainControl.calculator).not.toBeUndefined();
   });
 
-  it('throws an error when numpadController is not an instance of NumpadController', () => {
+  it("throws an error when numpadController is not an instance of NumpadController", () => {
     expect(() => {
       new MainController({
         numpadController: 123,
       });
-    }).toThrow('must be an instance of NumpadController');
+    }).toThrow("must be an instance of NumpadController");
   });
 
   //TODO adicionar para os outros
 
-  it('gets input value from the numpadController and passes it on to the main display', () => {
+  it("gets input value from the numpadController and passes it on to the main display", () => {
     const mainControl = new MainController(initElements());
     mainControl.addToDisplay(1);
 
-    expect(mainControl.displayController.main).toEqual('1');
+    expect(mainControl.displayController.main).toEqual("1");
+  });
+
+  it("clears input values from the numpadController and clears displays", () => {
+    const mainControl = new MainController(initElements());
+    mainControl.addToDisplay(1);
+
+    expect(mainControl.displayController.main).toEqual("1");
+
+    mainControl.clearDisplay();
+
+    expect(mainControl.displayController.clear).toHaveBeenCalled();
+  });
+
+  it("it clears last character being displayed", () => {
+    const mainControl = new MainController(initElements());
+    mainControl.addToDisplay(12);
+
+    expect(mainControl.displayController.main).toEqual("12");
+
+    mainControl.clearLastChar();
+
+    expect(mainControl.displayController.main).toEqual("1");
+  });
+
+  it("displays a message on screen", () => {
+    const mainControl = new MainController(initElements());
+
+    mainControl.displayMsg("test");
+    expect(mainControl.displayController.main).toEqual("test");
   });
 });

@@ -9,34 +9,32 @@ export default class MainController {
     this.numpadController = object.numpadController;
     this.calculator = object.calculator;
     this.currentCalculation = ""; // innerText ignora whitespace
-    this.clearCounter = 0;
   }
 
   addToDisplay(value) {
     switch (value) {
       case "S":
-        this.displayMsg("Bye Bye!");
+        this.displayController._elMain.parentElement.style.backgroundColor =
+          "#505343";
 
-        setTimeout(() => {
-          this.displayController._elMain.parentElement.style.backgroundColor =
-            "#505343";
-          this.clearDisplay();
-        }, 2000);
         break;
       case "A":
-        this.clearDisplay();
         this.displayController._elMain.parentElement.style.backgroundColor =
           "#b1b3a6";
-
-        setTimeout(() => {
-          this.displayMsg("Welcome!");
-        }, 1000);
-
-        setTimeout(() => {
-          this.clearDisplay();
-        }, 3000);
-
+        const clearDisplay = () => {
+          this.currentCalculation = "";
+          this.displayController.main = this.currentCalculation;
+        };
+        const welcomeMsg = () => {
+          this.currentCalculation = "Welcome!";
+          this.displayController.main = this.currentCalculation;
+        };
+        setTimeout(welcomeMsg, 1000);
+        setTimeout(clearDisplay, 3000);
         break;
+      // case "A":
+      //   this.currentCalculation = this.calculator.runCommand(value);
+      //   break;
       case "CE":
         if (this.displayController.secondary) return;
         this.displayController.secondary = this.currentCalculation;
@@ -45,17 +43,12 @@ export default class MainController {
         );
         break;
       case "":
-        this.clearCounter++;
-
-        setTimeout(() => {
-          if (this.clearCounter === 1) {
-            this.clearLastChar();
-          } else if (this.clearCounter >= 2) {
-            this.clearDisplay();
-          }
-          this.clearCounter = 0;
-        }, 200);
-
+        let counter = 0;
+        counter++;
+        console.log();
+        this.currentCalculation = "";
+        this.displayController.clear();
+        // this.currentCalculation = this.currentCalculation.slice(0, -1);
         break;
       case ".":
         if (this.currentCalculation.includes(".")) return;
@@ -67,28 +60,10 @@ export default class MainController {
         break;
     }
     this.displayController.main = this.currentCalculation;
-  }
-
-  clearDisplay() {
-    this.currentCalculation = "";
-    this.displayController.clear();
-  }
-
-  clearLastChar() {
-    this.currentCalculation = this.currentCalculation.slice(0, -1);
-    this.displayController.main = this.currentCalculation;
-  }
-
-  displayMsg(msg) {
-    this.currentCalculation = msg;
-    this.displayController.main = this.currentCalculation;
+    console.log(this.currentCalculation);
   }
 }
 
 // TODO
 // Remover menu, Ligar e Desligar, Melhorar interface
 // Opções: apagar último char, adicionar espaços, adicionar parênteses, bugs
-
-// case "A":
-//   this.currentCalculation = this.calculator.runCommand(value);
-//   break;

@@ -1,16 +1,11 @@
 import CommandsManager from "./src/commands-manager/CommandsManager.js";
 import singlePassEvaluator from "./src/calc-engine/single-pass/single-pass.js";
 import MemoryManager from "./src/memory-manager/MemoryManager.js";
-import readline from "readline"; //Só funciona em NODE JS
+import readline from "readline"; // Needs NODE JS
 
 const memoryManager = new MemoryManager();
 const calcEngine = singlePassEvaluator;
 const calculator = new CommandsManager(memoryManager, calcEngine);
-
-// a calculadora vai pedir inputs sequencialmente
-// depois de fazer input, vai fazer runCommand com input
-// imprime resultado de runCommand
-// reinicia loop
 
 const rl = readline.createInterface({
   input: process.stdin,

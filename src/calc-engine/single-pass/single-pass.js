@@ -48,23 +48,3 @@ const singlePassEvaluator = (expression) => {
 };
 
 export default singlePassEvaluator;
-
-// HOW TO EVALUATE INSIDE SINGLE-PASS?
-// + (3) (4)
-// 4 3 +
-// opA opB operatorBinary
-
-// after first operand:
-// A: another operand must follow
-// B: an unary operator must follow
-// after second operand:
-// C: a binary operator must follow
-// D: first token must be an operator, either binary or unary
-// 3 + 4 : fails A
-// 1 2 3 : fails C
-// 3 + + : fails A
-// + 3 4 : fails D
-
-// we need to know what token we are iterating
-// we need to know if it's first or second operand
-// we need to know the type of operator

@@ -41,8 +41,3 @@ describe("validator", () => {
     expect(orderValidator("* (780982) + (754)")).toBe(false);
   });
 });
-
-//it needs to have balanced parens
-//the parens need to be in order
-//a binary expression needs to have 4 parentheses
-//an unary expression needs to have 2 parentheses

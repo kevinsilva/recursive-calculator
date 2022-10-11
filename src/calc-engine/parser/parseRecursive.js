@@ -7,7 +7,7 @@ const parseRecursive = (expression, outputMode = "array") =>
 
 const OUTPUT_MODES = {
   array: (expression) => {
-    const { processOperator, processOperand } = arrayProcessor(); // processOperator = arrayProcessor.processOperator
+    const { processOperator, processOperand } = arrayProcessor();
     return genericOutput("array", expression, processOperator, processOperand);
   },
   modeled: (expression) => {
@@ -24,18 +24,15 @@ const OUTPUT_MODES = {
 const genericOutput = (mode, expression, processOperator, processOperand) => {
   if (!expression.includes("(") && !expression.includes(")")) return expression;
 
-  let operator = ""; // COS
-  let processedOperator = null; // +
+  let operator = "";
+  let processedOperator = null;
   let processedExpression = null;
 
   let unwrappedLength = 0;
 
-  //"+ (- (5) (3)) (* (9) (10))"
-  //character = "COS"
-
   for (const [index, character] of expression
-    .replace(" ", "") //"+(-(5)(3))(*(9)(10))"
-    .split("") // ["+", "(", "-", "(", "5", ")", "(", "3", ")", ")", "(", "*", "(", "9", ")", "(", "1", "0", ")", ")"]
+    .replace(" ", "")
+    .split("")
     .entries()) {
     if (unwrappedLength > 0) {
       unwrappedLength--;
@@ -43,9 +40,9 @@ const genericOutput = (mode, expression, processOperator, processOperand) => {
     }
 
     if (character === "(") {
-      const unwrappedOperand = unwrapOperand(expression.substring(index)); //   //"(- (5) (3)) (* (9) (10))" then "- (5) (3)"
-      unwrappedLength = unwrappedOperand.length; // 8
-      const parsedOperand = parseRecursive(unwrappedOperand, mode); // -45
+      const unwrappedOperand = unwrapOperand(expression.substring(index));
+      unwrappedLength = unwrappedOperand.length;
+      const parsedOperand = parseRecursive(unwrappedOperand, mode);
       processedExpression = processOperand(processedOperator, parsedOperand);
       continue;
     }
@@ -91,17 +88,15 @@ const modeledProcessor = () => ({
   },
 });
 
-// (-45)
-
 const isEndOfOperand = (openCount, closeCount) =>
   openCount > 0 && closeCount > 0 && openCount - closeCount === 0;
 
 const unwrapOperand = (expression) => {
-  let openCount = 0; // 3
-  let closeCount = 0; // 3
+  let openCount = 0;
+  let closeCount = 0;
 
-  let openIndex = -1; // 0
-  let closeIndex = -1; //
+  let openIndex = -1;
+  let closeIndex = -1;
 
   for (const [index, character] of expression.split("").entries()) {
     if (character === "(") {

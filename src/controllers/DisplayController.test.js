@@ -1,71 +1,56 @@
-//main-controller 
-// o utilizador clica numa tecla 
-// -> numpad controller determina o valor 
-// -> main controller passa para o 
-// -> display-controller actualiza main display
-
-// display-controller 
-//   renderizar (mostrar e esconder) inputs para main e secondary
-
-
 import DisplayController from "./DisplayController.js";
 
 describe("Display Controller", () => {
+  function initElements() {
+    return {
+      elMain: { innerText: "" },
+      elSecondary: { innerText: "" },
+    };
+  }
 
-    function initElements() {
-        return {
-            elMain: {innerText: ""},
-            elSecondary: {innerText: ""}
-        }
-    }
+  it("initializes with both displays empty", () => {
+    const display = new DisplayController(initElements());
 
-    it ("initializes with both displays empty", () => {
-        const display = new DisplayController(initElements());
+    expect(display.main).toEqual("");
+    expect(display.secondary).toEqual("");
+  });
 
-        expect(display.main).toEqual("");
-        expect(display.secondary).toEqual("");
-    });
+  it("renders inputs to main display", () => {
+    const elements = initElements();
+    const display = new DisplayController(elements);
+    const input = "234";
 
-    it ("renders inputs to main display", () => {
+    display.main = input;
 
-        const elements = initElements();
-        const display = new DisplayController(elements);
-        const input = "234";
+    expect(elements.elMain.innerText).toEqual(input);
+  });
 
-        display.main = input;
+  it("renders inputs to secondary display", () => {
+    const elements = initElements();
+    const display = new DisplayController(elements);
+    const input = "234";
 
-        expect(elements.elMain.innerText).toEqual(input);
-    });
+    display.secondary = input;
 
-    it ("renders inputs to secondary display", () => {
+    expect(elements.elSecondary.innerText).toEqual(input);
+  });
 
-        const elements = initElements();
-        const display = new DisplayController(elements);
-        const input = "234";
+  it("clears inputs on both displays", () => {
+    const elements = initElements();
+    elements.elMain.innerText = "123";
+    elements.elSecondary.innerText = "456";
 
-        display.secondary = input;
+    const display = new DisplayController(elements);
 
-        expect(elements.elSecondary.innerText).toEqual(input);
-    });
+    expect(display.main).toEqual("123");
+    expect(display.secondary).toEqual("456");
 
-    it ("clears inputs on both displays", () => {
-        const elements = initElements();
-        elements.elMain.innerText = "123";
-        elements.elSecondary.innerText = "456";
+    display.clear();
 
-        const display = new DisplayController(elements);
-
-        expect(display.main).toEqual("123");
-        expect(display.secondary).toEqual("456");
-
-        display.clear();
-        
-        expect(display.main).toEqual("");
-        expect(display.secondary).toEqual("");
-    });
+    expect(display.main).toEqual("");
+    expect(display.secondary).toEqual("");
+  });
 });
-
-
 
 // import DisplayController from "./DisplayController.js";
 
@@ -118,12 +103,9 @@ describe("Display Controller", () => {
 //         expect(display.getSecondary()).toEqual("456");
 
 //         display.clear();
-        
+
 //         expect(display.getMain()).toEqual("");
 //         expect(display.getSecondary()).toEqual("");
 //     })
-
-
-
 
 // })
