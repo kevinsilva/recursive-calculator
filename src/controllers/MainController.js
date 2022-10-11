@@ -38,13 +38,14 @@ export default class MainController {
 
         break;
       case "CE":
-        if (this.displayController.secondary) return;
+        if (this.displayController.secondary) this.clearDisplay();
         this.displayController.secondary = this.currentCalculation;
         this.currentCalculation = this.calculator.runCommand(
           "CE " + this.currentCalculation
         );
         break;
       case "":
+        if (this.displayController.secondary) this.clearDisplay();
         this.clearCounter++;
 
         setTimeout(() => {
@@ -62,7 +63,7 @@ export default class MainController {
         this.currentCalculation += value;
         break;
       default:
-        if (this.displayController.secondary) return;
+        if (this.displayController.secondary) this.clearDisplay();
         this.currentCalculation += value;
         break;
     }
