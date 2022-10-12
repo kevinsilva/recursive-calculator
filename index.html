@@ -12,16 +12,33 @@
 <body>
   <div class="container">
     <nav class="navigation">
-      <h1 class="title">Polish Notation Calculator</h1>
+      <h1 class="title">Recursive Calculator</h1>
       <input type="checkbox" class="navigation__checkbox" id="nav-toggle">
       <label for="nav-toggle" class="navigation__button">
-        <span class="read-more">Learn more &#8250;</span>
-        <span class="close">Close &#10539;</span>
+        <span class="navigation__button navigation__button--read-more">Learn more &#8250;</span>
+        <span class="navigation__button navigation__button--close">Close &#10539;</span>
       </label>
-      <div class="navigation__background">&nbsp; </div>
+      <div class="navigation__background">&nbsp;</div>
       <div class="info">
-        <p class="info__text">Welcome to the Polish Notation Calculator!<br> To use this calculator, you need to prefix
-          the operator before the operands. For example: + (a) (b); is equivalent to its infix notation a + b.</p>
+        <h2 class="info__title">Instructions</h2>
+        <p class="info__text">This calculator uses a prefix notation with parenthesis.</p>
+        <p class="info__text">This means you need to prefix the operator before operands to evaluate an expression. For
+          example: <span class="example">5 * (2 + 2)</span> would be evaluated as <span class="example">* (5) (+ (2)
+            (2)).</span></p>
+        <div class="info__list">
+          <button class="key-main bg-green">S</button>
+          <p class="info__item">Click on the green button to turn the calculator on</p>
+          <button class="key-main bg-red">S</button>
+          <p class="info__item">Click on the red button to turn the calculator off</p>
+          <button class="key text-small">SPACE</button>
+          <p class="info__item">Use space after each operator and operand</p>
+          <button class="key text-small">( )</button>
+          <p class="info__item">The operands must be inside parenthesis. </p>
+          <button class="key text-small">C</button>
+          <p class="info__item">To clear last character, click on the clear button</p>
+          <button id="double-click" class="key text-small">C</button>
+          <p class="info__item">To clear the entire expression, double click the clear button</p>
+        </div>
       </div>
     </nav>
     <div class="calculator">
@@ -45,8 +62,6 @@
               <button id="clearAll" class="key text-small">C</button>
               <button id="open" class="key text-small">(</button>
               <button id="close" class="key text-small">)</button>
-              <!-- <button id="close" class="key">)</button> -->
-              <!-- <button class="delete">DEL</button> -->
             </div>
             <div class="numpad__secondary">
               <!-- class="key key--operator  -->
@@ -60,7 +75,6 @@
               <button id="eight" class="key">8</button>
               <button id="nine" class="key">9</button>
               <button id="floor" class="key text-small">FLOOR</button>
-              <!-- <div id="floor" class="key key--pill text-small">FLR</div> -->
               <button id="multiply" class="key">*</button>
               <button id="four" class="key">4 </button>
               <button id="five" class="key">5</button>
