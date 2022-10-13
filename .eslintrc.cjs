@@ -14,5 +14,6 @@ module.exports = {
   },
   'ignorePatterns': ['node_modules'],
   'rules': {
+    "require-jsdoc" : 0,
   },
 };
