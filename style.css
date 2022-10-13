@@ -183,9 +183,9 @@ body {
   font-size: 1.5rem;
 }
 
-.navigation .calculator {
-  margin-bottom: 3rem;
-  z-index: 1;
+.info__credit {
+  margin-top: 3rem;
+  text-align: center;
 }
 
 .calculator {
@@ -193,7 +193,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); */
-  justify-self: center;
+  margin-bottom: 3rem;
+  z-index: 1;
 }
 
 .case {
@@ -372,4 +373,20 @@ body {
 
 .text-small {
   font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 68.5%;
+  }
+
+  .key-main::after {
+    top: 0.2rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 72.5%;
+  }
 }

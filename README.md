@@ -1,4 +1,4 @@
-# Polish Notation Calculator
+# Recursive Calculator
 
 ![preview](others/X.gif)
 
