@@ -1,6 +1,6 @@
 # Recursive Calculator
 
-![preview](img/recursive-calc.gif)
+![preview](img/recursive-calculator.gif)
 
 This calculator can perform calculations on unary and binary expressions written in Polish notation (operator is prefixed to operands). It can use either a recursion algorithm, or a single-pass algorithm to solve complex expressions where an operand is another expression.
 
