@@ -1,17 +1,17 @@
 import MainController from "./MainController.js";
 import NumpadController from "./NumpadController.js";
+import DisplayController from "./DisplayController.js";
+
 jest.mock("./NumpadController.js");
 
 describe("Main Controller", () => {
   function initElements() {
     return {
-      displayController: {
-        main: "",
-        secondary: "",
-        clear: jest.fn(),
-      },
-      numpadController: new NumpadController(),
-      // { buttons: {}, onButtonClick: jest.fn() },
+      displayController: new DisplayController({
+        elMain: { innerText: "" },
+        elSecondary: { innerText: "" },
+      }),
+      numpadController: new NumpadController({ buttons: {}, onButtonClick: jest.fn() }),
       calculator: { runCommand: jest.fn() },
     };
   }
@@ -32,7 +32,14 @@ describe("Main Controller", () => {
     }).toThrow("must be an instance of NumpadController");
   });
 
-  //TODO adicionar para os outros
+  it("throws an error when displayController is not an instance of DisplayController", () => {
+    expect(() => {
+      new MainController({
+        numpadController: new NumpadController(),
+        displayController: "display",
+      });
+    }).toThrow("must be an instance of DisplayController");
+  })
 
   it("gets input value from the numpadController and passes it on to the main display", () => {
     const mainControl = new MainController(initElements());
@@ -49,7 +56,8 @@ describe("Main Controller", () => {
 
     mainControl.clearDisplay();
 
-    expect(mainControl.displayController.clear).toHaveBeenCalled();
+    expect(mainControl.displayController.main).toEqual("");
+    expect(mainControl.displayController.secondary).toEqual("");
   });
 
   it("it clears last character being displayed", () => {

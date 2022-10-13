@@ -1,1 +1,13 @@
+#####
+# OS X temporary files
 .DS_Store
+.Trashes
+*.swp
+
+#####
+# Node stuff
+
+logs
+*.log
+npm-debug.log*
+node_modules

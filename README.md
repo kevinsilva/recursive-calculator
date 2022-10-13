@@ -1,6 +1,6 @@
 # Recursive Calculator
 
-![preview](others/X.gif)
+![preview](img/recursive-calc.gif)
 
 This calculator can perform calculations on unary and binary expressions written in Polish notation (operator is prefixed to operands). It can use either a recursion algorithm, or a single-pass algorithm to solve complex expressions where an operand is another expression.
 
@@ -145,7 +145,7 @@ To install the component, clone repository, change into directory on the termina
 
 ```http
 git clone <repository-url>
-cd calculator
+cd recursive
 npm install
 ```
 

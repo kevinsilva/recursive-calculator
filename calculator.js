@@ -13,7 +13,7 @@ const rl = readline.createInterface({
 });
 
 console.log(
-  "Bem-vindo à calculadora XPTO Eddisrupt. Para lista de comandos utilize 'A'"
+  "Bem-vindo à calculadora Eddisrupt. Para lista de comandos utilize 'A'"
 );
 
 //call me back when this event (close) happens

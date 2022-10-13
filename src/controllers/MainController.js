@@ -1,14 +1,18 @@
 import NumpadController from "./NumpadController.js";
+import DisplayController from "./DisplayController.js";
 
 export default class MainController {
   constructor(object) {
     if (!(object.numpadController instanceof NumpadController)) {
       throw new TypeError("must be an instance of NumpadController");
     }
+    if (!(object.displayController instanceof DisplayController)) {
+      throw new TypeError("must be an instance of DisplayController");
+    }
     this.displayController = object.displayController;
     this.numpadController = object.numpadController;
     this.calculator = object.calculator;
-    this.currentCalculation = ""; // innerText ignora whitespace
+    this.currentCalculation = ""; 
     this.clearCounter = 0;
   }
 
