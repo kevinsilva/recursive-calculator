@@ -15,6 +15,7 @@ export default class MainController {
   addToDisplay(value) {
     switch (value) {
       case "S":
+        this.displayController.secondary = "";
         this.displayMsg("Bye Bye!");
 
         setTimeout(() => {
@@ -39,6 +40,7 @@ export default class MainController {
         break;
       case "CE":
         if (this.displayController.secondary) this.clearDisplay();
+
         this.displayController.secondary = this.currentCalculation;
         this.currentCalculation = this.calculator.runCommand(
           "CE " + this.currentCalculation
@@ -46,6 +48,7 @@ export default class MainController {
         break;
       case "":
         if (this.displayController.secondary) this.clearDisplay();
+
         this.clearCounter++;
 
         setTimeout(() => {
