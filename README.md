@@ -144,7 +144,7 @@ const mainController = new MainController({
 To install the component, clone repository, change into directory on the terminal and install with npm.
 
 ```http
-git clone <repository-url>
+git clone https://github.com/kevinsilva/recursive-calculator.git
 cd recursive
 npm install
 ```
