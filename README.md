@@ -176,6 +176,8 @@ To run the tests.
 
 Big thanks to my mentor 🎓, [William R. J. Ribeiro](https://github.com/williamrjribeiro/), and to my teammate, André Christofori.
 
+Interface based on [Braun](https://us.braun.com/en-us/) ET66, designed by Dieter Rams.
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
