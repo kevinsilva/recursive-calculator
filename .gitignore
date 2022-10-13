@@ -1,13 +1,25 @@
-#####
-# OS X temporary files
-.DS_Store
-.Trashes
-*.swp
+# VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
 
-#####
-# Node stuff
+# Local History for Visual Studio Code
+.history/
 
+# Private Node Modules
+node_modules
 logs
 *.log
 npm-debug.log*
-node_modules
+
+# Mac/OSX
+.DS_Store
+ 
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
