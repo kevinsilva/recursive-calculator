@@ -3,10 +3,10 @@ import {
   UNARY_OPERATORS,
   BAD_EXP,
   toNumber,
-} from "../../utilities.js";
+} from '../../utilities.js';
 
-import Stack from "./stack.js";
-import { validator } from "../validator/validator.js";
+import Stack from './stack.js';
+import {validator} from '../validator/validator.js';
 
 const singlePassEvaluator = (expression) => {
   const stack = new Stack();
@@ -15,9 +15,9 @@ const singlePassEvaluator = (expression) => {
   if (!isValid) return BAD_EXP;
 
   const tokens = expression
-    .replace(/[\(\)]/g, "")
-    .split(" ")
-    .reverse();
+      .replace(/[\(\)]/g, '')
+      .split(' ')
+      .reverse();
 
   for (const token of tokens) {
     if (token in UNARY_OPERATORS) {

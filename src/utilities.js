@@ -3,7 +3,7 @@ import {
   Divide,
   Multiply,
   Subtract,
-} from "./calc-engine/evaluator/modeled/BinaryExpressions.js";
+} from './calc-engine/evaluator/modeled/BinaryExpressions.js';
 import {
   Abs,
   Cos,
@@ -13,7 +13,7 @@ import {
   Floor,
   Log,
   Round,
-} from "./calc-engine/evaluator/modeled/UnaryExpressions.js";
+} from './calc-engine/evaluator/modeled/UnaryExpressions.js';
 
 const toNumber = (input) => {
   const result = Number.parseFloat(input);
@@ -28,10 +28,10 @@ const roundResult = (result) => parseFloat(result.toFixed(2));
 
 const splitExpression = (expression) =>
   expression
-    .replace(/[\(]/g, " ( ")
-    .replace(/[\)]/g, " ) ")
-    .split(" ")
-    .filter((el) => el !== "");
+      .replace(/[\(]/g, ' ( ')
+      .replace(/[\)]/g, ' ) ')
+      .split(' ')
+      .filter((el) => el !== '');
 
 const makeEmptyExpression = (operator) => new OPERATOR_MAP[operator]();
 
@@ -47,28 +47,28 @@ const UNARY_OPERATORS = {
 };
 
 const BINARY_OPERATORS = {
-  "+": (a, b) => a + b,
-  "-": (a, b) => a - b,
-  "*": (a, b) => a * b,
-  "/": (a, b) => a / b,
+  '+': (a, b) => a + b,
+  '-': (a, b) => a - b,
+  '*': (a, b) => a * b,
+  '/': (a, b) => a / b,
 };
 
 const OPERATOR_MAP = {
-  ABS: Abs,
-  SIN: Sin,
-  COS: Cos,
-  EXP: Exp,
-  FLOOR: Floor,
-  CEIL: Ceil,
-  ROUND: Round,
-  LOG: Log,
-  "+": Add,
-  "-": Subtract,
-  "*": Multiply,
-  "/": Divide,
+  'ABS': Abs,
+  'SIN': Sin,
+  'COS': Cos,
+  'EXP': Exp,
+  'FLOOR': Floor,
+  'CEIL': Ceil,
+  'ROUND': Round,
+  'LOG': Log,
+  '+': Add,
+  '-': Subtract,
+  '*': Multiply,
+  '/': Divide,
 };
 
-const BAD_EXP = "Expressão mal definida.";
+const BAD_EXP = 'Expressão mal definida.';
 
 export {
   toNumber,

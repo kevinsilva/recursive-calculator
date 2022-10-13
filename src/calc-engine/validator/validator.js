@@ -3,17 +3,17 @@ import {
   BINARY_OPERATORS,
   UNARY_OPERATORS,
   OPERATOR_MAP,
-} from "../../utilities.js";
+} from '../../utilities.js';
 
 const balanceValidator = (expression) => {
-  const parentheses = expression.replace(/[^\(\)]/g, "");
+  const parentheses = expression.replace(/[^\(\)]/g, '');
   let openCount = 0;
   let closeCount = 0;
 
   for (const character of parentheses) {
-    if (character === "(") {
+    if (character === '(') {
       openCount++;
-    } else if (character === ")" && closeCount < openCount) {
+    } else if (character === ')' && closeCount < openCount) {
       closeCount++;
     } else {
       return false;
@@ -24,8 +24,8 @@ const balanceValidator = (expression) => {
 };
 
 const countValidator = (expression) => {
-  const noParens = expression.replace(/[\(\)]/g, "").split(" ");
-  const onlyParens = expression.replace(/[^\(\)]/g, "");
+  const noParens = expression.replace(/[\(\)]/g, '').split(' ');
+  const onlyParens = expression.replace(/[^\(\)]/g, '');
   let minParens = 0;
 
   noParens.forEach((char) => {
@@ -43,15 +43,15 @@ const orderValidator = (expression) => {
   const splitted = splitExpression(expression);
 
   for (const [index, char] of splitted.entries()) {
-    let nextChar = splitted[index + 1];
-    if (char === "(") {
+    const nextChar = splitted[index + 1];
+    if (char === '(') {
       if (!OPERATOR_MAP.hasOwnProperty(nextChar) && isNaN(nextChar)) {
         return false;
       }
     }
 
-    if (char === ")") {
-      if (nextChar !== "(" && nextChar !== ")" && index < splitted.length - 1) {
+    if (char === ')') {
+      if (nextChar !== '(' && nextChar !== ')' && index < splitted.length - 1) {
         return false;
       }
     }
@@ -68,4 +68,4 @@ const validator = (expression) => {
   );
 };
 
-export { validator, orderValidator };
+export {validator, orderValidator};

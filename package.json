@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest --env=jsdom"
+    "test": "jest --env=jsdom",
+    "lint": "eslint src/"
   },
   "babel": {
     "env": {
@@ -21,6 +22,8 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+    "eslint": "^8.25.0",
+    "eslint-config-google": "^0.14.0",
     "jest": "^27.4.4"
   },
   "dependencies": {

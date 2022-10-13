@@ -1,40 +1,40 @@
-import NumpadController from "./NumpadController.js";
-import DisplayController from "./DisplayController.js";
+import NumpadController from './NumpadController.js';
+import DisplayController from './DisplayController.js';
 
 export default class MainController {
   constructor(object) {
     if (!(object.numpadController instanceof NumpadController)) {
-      throw new TypeError("must be an instance of NumpadController");
+      throw new TypeError('must be an instance of NumpadController');
     }
     if (!(object.displayController instanceof DisplayController)) {
-      throw new TypeError("must be an instance of DisplayController");
+      throw new TypeError('must be an instance of DisplayController');
     }
     this.displayController = object.displayController;
     this.numpadController = object.numpadController;
     this.calculator = object.calculator;
-    this.currentCalculation = ""; 
+    this.currentCalculation = '';
     this.clearCounter = 0;
   }
 
   addToDisplay(value) {
     switch (value) {
-      case "S":
-        this.displayController.secondary = "";
-        this.displayMsg("Bye Bye!");
+      case 'S':
+        this.displayController.secondary = '';
+        this.displayMsg('Bye Bye!');
 
         setTimeout(() => {
           this.displayController._elMain.parentElement.style.backgroundColor =
-            "#505343";
+            '#505343';
           this.clearDisplay();
         }, 2000);
         break;
-      case "A":
+      case 'A':
         this.clearDisplay();
         this.displayController._elMain.parentElement.style.backgroundColor =
-          "#b1b3a6";
+          '#b1b3a6';
 
         setTimeout(() => {
-          this.displayMsg("Welcome!");
+          this.displayMsg('Welcome!');
         }, 1000);
 
         setTimeout(() => {
@@ -42,15 +42,15 @@ export default class MainController {
         }, 3000);
 
         break;
-      case "CE":
+      case 'CE':
         if (this.displayController.secondary) this.clearDisplay();
 
         this.displayController.secondary = this.currentCalculation;
         this.currentCalculation = this.calculator.runCommand(
-          "CE " + this.currentCalculation
+            'CE ' + this.currentCalculation,
         );
         break;
-      case "":
+      case '':
         if (this.displayController.secondary) this.clearDisplay();
 
         this.clearCounter++;
@@ -65,8 +65,8 @@ export default class MainController {
         }, 200);
 
         break;
-      case ".":
-        if (this.currentCalculation.includes(".")) return;
+      case '.':
+        if (this.currentCalculation.includes('.')) return;
         this.currentCalculation += value;
         break;
       default:
@@ -78,7 +78,7 @@ export default class MainController {
   }
 
   clearDisplay() {
-    this.currentCalculation = "";
+    this.currentCalculation = '';
     this.displayController.clear();
   }
 
@@ -92,11 +92,3 @@ export default class MainController {
     this.displayController.main = this.currentCalculation;
   }
 }
-
-// TODO
-// Remover menu, Ligar e Desligar, Melhorar interface
-// Opções: apagar último char, adicionar espaços, adicionar parênteses, bugs
-
-// case "A":
-//   this.currentCalculation = this.calculator.runCommand(value);
-//   break;

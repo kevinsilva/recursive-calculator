@@ -1,4 +1,4 @@
-import { roundResult } from '../utilities.js';
+import {roundResult} from '../utilities.js';
 
 export default class CommandsManager {
   constructor(memoryManager, calcEngine) {

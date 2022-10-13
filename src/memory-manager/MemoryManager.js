@@ -5,7 +5,7 @@ export default class MemoryManager {
 
   create(memoryName) {
     if (this.memoryExists(memoryName)) {
-      return "ja existe uma memoria com o mesmo nome.";
+      return 'ja existe uma memoria com o mesmo nome.';
     }
 
     if (!this.isMemoryFull()) {
@@ -13,7 +13,7 @@ export default class MemoryManager {
       return `Memoria criada com o nome: ${memoryName}`;
     }
 
-    return "A calculadora não tem mais memórias disponíveis";
+    return 'A calculadora não tem mais memórias disponíveis';
   }
 
   read(memoryName) {
@@ -44,17 +44,17 @@ export default class MemoryManager {
 
   list() {
     if (this.createdMemoryNames(this.memory).length === 0) {
-      return "Calculadora sem memorias.";
+      return 'Calculadora sem memorias.';
     }
 
     return this.createdMemoryNames()
-      .map((name) => `${name}: ${this.memory[name].toFixed(2)}`)
-      .join("; ");
+        .map((name) => `${name}: ${this.memory[name].toFixed(2)}`)
+        .join('; ');
   }
 
   _isMemoryUsed(expression) {
     const memoryRegex = this.createdMemoryNames().map(
-      (name) => new RegExp(name, "g")
+        (name) => new RegExp(name, 'g'),
     );
 
     for (const reg of memoryRegex) {

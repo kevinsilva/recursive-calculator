@@ -1,45 +1,45 @@
-import { OPERATOR_MAP, makeEmptyExpression } from "../../utilities";
-import { BinaryExpression } from "../evaluator/modeled/BinaryExpressions";
-import { UnaryExpression } from "../evaluator/modeled/UnaryExpressions";
+import {OPERATOR_MAP, makeEmptyExpression} from '../../utilities';
+import {BinaryExpression} from '../evaluator/modeled/BinaryExpressions';
+import {UnaryExpression} from '../evaluator/modeled/UnaryExpressions';
 
-const parseRecursive = (expression, outputMode = "array") =>
+const parseRecursive = (expression, outputMode = 'array') =>
   OUTPUT_MODES[outputMode](expression);
 
 const OUTPUT_MODES = {
   array: (expression) => {
-    const { processOperator, processOperand } = arrayProcessor();
-    return genericOutput("array", expression, processOperator, processOperand);
+    const {processOperator, processOperand} = arrayProcessor();
+    return genericOutput('array', expression, processOperator, processOperand);
   },
   modeled: (expression) => {
-    const { processOperator, processOperand } = modeledProcessor();
+    const {processOperator, processOperand} = modeledProcessor();
     return genericOutput(
-      "modeled",
-      expression,
-      processOperator,
-      processOperand
+        'modeled',
+        expression,
+        processOperator,
+        processOperand,
     );
   },
 };
 
 const genericOutput = (mode, expression, processOperator, processOperand) => {
-  if (!expression.includes("(") && !expression.includes(")")) return expression;
+  if (!expression.includes('(') && !expression.includes(')')) return expression;
 
-  let operator = "";
+  let operator = '';
   let processedOperator = null;
   let processedExpression = null;
 
   let unwrappedLength = 0;
 
   for (const [index, character] of expression
-    .replace(" ", "")
-    .split("")
-    .entries()) {
+      .replace(' ', '')
+      .split('')
+      .entries()) {
     if (unwrappedLength > 0) {
       unwrappedLength--;
       continue;
     }
 
-    if (character === "(") {
+    if (character === '(') {
       const unwrappedOperand = unwrapOperand(expression.substring(index));
       unwrappedLength = unwrappedOperand.length;
       const parsedOperand = parseRecursive(unwrappedOperand, mode);
@@ -50,7 +50,7 @@ const genericOutput = (mode, expression, processOperator, processOperand) => {
     operator += character;
     if (operator in OPERATOR_MAP) {
       processedOperator = processOperator(operator);
-      operator = "";
+      operator = '';
       continue;
     }
   }
@@ -79,7 +79,7 @@ const modeledProcessor = () => ({
         break;
 
       case operator instanceof BinaryExpression:
-        const operandName = operator.operandA ? "operandB" : "operandA";
+        const operandName = operator.operandA ? 'operandB' : 'operandA';
         operator[operandName] = operand;
         break;
     }
@@ -98,14 +98,14 @@ const unwrapOperand = (expression) => {
   let openIndex = -1;
   let closeIndex = -1;
 
-  for (const [index, character] of expression.split("").entries()) {
-    if (character === "(") {
+  for (const [index, character] of expression.split('').entries()) {
+    if (character === '(') {
       if (openIndex === -1) {
         openIndex = index;
       }
       openCount++;
       continue;
-    } else if (character === ")") {
+    } else if (character === ')') {
       closeCount++;
       if (isEndOfOperand(openCount, closeCount)) {
         closeIndex = index;

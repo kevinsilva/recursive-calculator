@@ -1,24 +1,24 @@
-import NumpadController from "./NumpadController.js";
+import NumpadController from './NumpadController.js';
 
-describe("Numpad Controller", () => {
-  it("initializes with numpad buttons", () => {
+describe('Numpad Controller', () => {
+  it('initializes with numpad buttons', () => {
     document.body.innerHTML = '  <button id="one" />' + '<button id="exp" />';
 
-    const arg = { expID: "exp", oneID: "one" };
+    const arg = {expID: 'exp', oneID: 'one'};
     const numpad = new NumpadController(arg);
 
     expect(numpad.buttons.expEl.id).toEqual(arg.expID);
     expect(numpad.buttons.oneEl.id).toEqual(arg.oneID);
   });
 
-  it("detects user click events and determines its value", () => {
+  it('detects user click events and determines its value', () => {
     document.body.innerHTML = ' <button id="one" />' + '<button id="exp" />';
 
-    const arg = { expID: "exp", oneID: "one" };
+    const arg = {expID: 'exp', oneID: 'one'};
     const clickSpy = jest.fn();
     const numpad = new NumpadController(arg, clickSpy);
 
-    const click = new MouseEvent("click", {
+    const click = new MouseEvent('click', {
       view: window,
       bubbles: true,
       cancelable: true,
@@ -28,10 +28,10 @@ describe("Numpad Controller", () => {
     numpad.buttons.expEl.dispatchEvent(click);
 
     expect(clickSpy).toHaveBeenCalledWith(1);
-    expect(clickSpy).toHaveBeenCalledWith("EXP");
+    expect(clickSpy).toHaveBeenCalledWith('EXP');
   });
 
-  it("detects unary operands click events and determines its value", () => {
+  it('detects unary operands click events and determines its value', () => {
     document.body.innerHTML =
       '<button id="exp" />' +
       '<button id="log" />' +
@@ -43,20 +43,20 @@ describe("Numpad Controller", () => {
       '<button id="abs" />';
 
     const arg = {
-      expID: "exp",
-      logID: "log",
-      sinID: "sin",
-      cosID: "cos",
-      ceilID: "ceil",
-      floorID: "floor",
-      roundID: "round",
-      absID: "abs",
+      expID: 'exp',
+      logID: 'log',
+      sinID: 'sin',
+      cosID: 'cos',
+      ceilID: 'ceil',
+      floorID: 'floor',
+      roundID: 'round',
+      absID: 'abs',
     };
 
     const clickSpy = jest.fn();
     const numpad = new NumpadController(arg, clickSpy);
 
-    const click = new MouseEvent("click", {
+    const click = new MouseEvent('click', {
       view: window,
       bubbles: true,
       cancelable: true,
@@ -71,17 +71,17 @@ describe("Numpad Controller", () => {
     numpad.buttons.roundEl.dispatchEvent(click);
     numpad.buttons.absEl.dispatchEvent(click);
 
-    expect(clickSpy).toHaveBeenCalledWith("EXP");
-    expect(clickSpy).toHaveBeenCalledWith("LOG");
-    expect(clickSpy).toHaveBeenCalledWith("SIN");
-    expect(clickSpy).toHaveBeenCalledWith("COS");
-    expect(clickSpy).toHaveBeenCalledWith("CEIL");
-    expect(clickSpy).toHaveBeenCalledWith("FLOOR");
-    expect(clickSpy).toHaveBeenCalledWith("ROUND");
-    expect(clickSpy).toHaveBeenCalledWith("ABS");
+    expect(clickSpy).toHaveBeenCalledWith('EXP');
+    expect(clickSpy).toHaveBeenCalledWith('LOG');
+    expect(clickSpy).toHaveBeenCalledWith('SIN');
+    expect(clickSpy).toHaveBeenCalledWith('COS');
+    expect(clickSpy).toHaveBeenCalledWith('CEIL');
+    expect(clickSpy).toHaveBeenCalledWith('FLOOR');
+    expect(clickSpy).toHaveBeenCalledWith('ROUND');
+    expect(clickSpy).toHaveBeenCalledWith('ABS');
   });
 
-  it("detects binary operators click events and determines its value", () => {
+  it('detects binary operators click events and determines its value', () => {
     document.body.innerHTML =
       '<button id="add" />' +
       '<button id="subtract" />' +
@@ -89,16 +89,16 @@ describe("Numpad Controller", () => {
       '<button id="multiply" />';
 
     const arg = {
-      addID: "add",
-      subtractID: "subtract",
-      divideID: "divide",
-      multiplyID: "multiply",
+      addID: 'add',
+      subtractID: 'subtract',
+      divideID: 'divide',
+      multiplyID: 'multiply',
     };
 
     const clickSpy = jest.fn();
     const numpad = new NumpadController(arg, clickSpy);
 
-    const click = new MouseEvent("click", {
+    const click = new MouseEvent('click', {
       view: window,
       bubbles: true,
       cancelable: true,
@@ -109,13 +109,13 @@ describe("Numpad Controller", () => {
     numpad.buttons.divideEl.dispatchEvent(click);
     numpad.buttons.multiplyEl.dispatchEvent(click);
 
-    expect(clickSpy).toHaveBeenCalledWith("+");
-    expect(clickSpy).toHaveBeenCalledWith("-");
-    expect(clickSpy).toHaveBeenCalledWith("/");
-    expect(clickSpy).toHaveBeenCalledWith("*");
+    expect(clickSpy).toHaveBeenCalledWith('+');
+    expect(clickSpy).toHaveBeenCalledWith('-');
+    expect(clickSpy).toHaveBeenCalledWith('/');
+    expect(clickSpy).toHaveBeenCalledWith('*');
   });
 
-  it("detects operands click events and determines its value", () => {
+  it('detects operands click events and determines its value', () => {
     document.body.innerHTML =
       '<button id="one" />' +
       '<button id="two" />' +
@@ -129,22 +129,22 @@ describe("Numpad Controller", () => {
       '<button id="zero" />';
 
     const arg = {
-      oneID: "one",
-      twoID: "two",
-      threeID: "three",
-      fourID: "four",
-      fiveID: "five",
-      sixID: "six",
-      sevenID: "seven",
-      eightID: "eight",
-      nineID: "nine",
-      zeroID: "zero",
+      oneID: 'one',
+      twoID: 'two',
+      threeID: 'three',
+      fourID: 'four',
+      fiveID: 'five',
+      sixID: 'six',
+      sevenID: 'seven',
+      eightID: 'eight',
+      nineID: 'nine',
+      zeroID: 'zero',
     };
 
     const clickSpy = jest.fn();
     const numpad = new NumpadController(arg, clickSpy);
 
-    const click = new MouseEvent("click", {
+    const click = new MouseEvent('click', {
       view: window,
       bubbles: true,
       cancelable: true,
@@ -173,7 +173,7 @@ describe("Numpad Controller", () => {
     expect(clickSpy).toHaveBeenCalledWith(0);
   });
 
-  it("detects commands click events and determines its value", () => {
+  it('detects commands click events and determines its value', () => {
     document.body.innerHTML =
       '<button id="clearAll" />' +
       '<button id="open" />' +
@@ -185,20 +185,20 @@ describe("Numpad Controller", () => {
       '<button id="space" />';
 
     const arg = {
-      clearAllID: "clearAll",
-      openID: "open",
-      closeID: "close",
-      exitID: "exit",
-      helpID: "help",
-      dotID: "dot",
-      equalID: "equal",
-      spaceID: "space",
+      clearAllID: 'clearAll',
+      openID: 'open',
+      closeID: 'close',
+      exitID: 'exit',
+      helpID: 'help',
+      dotID: 'dot',
+      equalID: 'equal',
+      spaceID: 'space',
     };
 
     const clickSpy = jest.fn();
     const numpad = new NumpadController(arg, clickSpy);
 
-    const click = new MouseEvent("click", {
+    const click = new MouseEvent('click', {
       view: window,
       bubbles: true,
       cancelable: true,
@@ -213,13 +213,13 @@ describe("Numpad Controller", () => {
     numpad.buttons.equalEl.dispatchEvent(click);
     numpad.buttons.spaceEl.dispatchEvent(click);
 
-    expect(clickSpy).toHaveBeenCalledWith("");
-    expect(clickSpy).toHaveBeenCalledWith("(");
-    expect(clickSpy).toHaveBeenCalledWith(")");
-    expect(clickSpy).toHaveBeenCalledWith("S");
-    expect(clickSpy).toHaveBeenCalledWith("A");
-    expect(clickSpy).toHaveBeenCalledWith(".");
-    expect(clickSpy).toHaveBeenCalledWith("CE");
-    expect(clickSpy).toHaveBeenCalledWith(" ");
+    expect(clickSpy).toHaveBeenCalledWith('');
+    expect(clickSpy).toHaveBeenCalledWith('(');
+    expect(clickSpy).toHaveBeenCalledWith(')');
+    expect(clickSpy).toHaveBeenCalledWith('S');
+    expect(clickSpy).toHaveBeenCalledWith('A');
+    expect(clickSpy).toHaveBeenCalledWith('.');
+    expect(clickSpy).toHaveBeenCalledWith('CE');
+    expect(clickSpy).toHaveBeenCalledWith(' ');
   });
 });
