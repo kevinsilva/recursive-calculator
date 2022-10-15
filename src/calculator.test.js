@@ -1,4 +1,4 @@
-import {calculator} from './calculator.js';
+import calculator from './calculator.js';
 
 describe('Recursive Calculator', () => {
   it.each([
