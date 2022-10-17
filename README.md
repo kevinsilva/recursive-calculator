@@ -4,6 +4,8 @@
 
 This calculator can perform calculations on unary and binary expressions written in Polish notation (operator is prefixed to operands). It can use either a recursion algorithm, or a single-pass algorithm to solve complex expressions where an operand is another expression.
 
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-success?style=flat-square&logo=codesandbox)](https://codesandbox.io/p/github/kevinsilva/recursive-calculator/csb-recursive?file=%2FREADME.md)
+
 ## Implementation Details
 
 This project was divided into three main tasks: the creation of the calculation engine, the development of a memory manager for saving values, and the formation of the interface controllers.
