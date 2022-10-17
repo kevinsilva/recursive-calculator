@@ -8,8 +8,12 @@
     "test": "jest --env=jsdom",
     "lint": "eslint src/",
     "dev": "live-server",
-    "prefix:css": "postcss -u autoprefixer -r style.css"
+    "prefix:css": "postcss -u autoprefixer -r style.css",
+    "preinstall": "npx npm-force-resolutions"
   },
+  "resolutions": {
+    "glob-parent": "^6.0.1"
+ },
   "browserslist": [
     "last 2 versions"
   ],
