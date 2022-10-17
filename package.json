@@ -6,8 +6,17 @@
   "type": "module",
   "scripts": {
     "test": "jest --env=jsdom",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "dev": "live-server",
+    "prefix:css": "postcss -u autoprefixer -r style.css",
+    "preinstall": "npx npm-force-resolutions"
   },
+  "resolutions": {
+    "glob-parent": "^6.0.1"
+ },
+ "browserslist": [
+  "last 2 versions"
+],
   "babel": {
     "env": {
       "test": {
@@ -24,9 +33,10 @@
     "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "eslint": "^8.25.0",
     "eslint-config-google": "^0.14.0",
-    "jest": "^27.4.4"
-  },
-  "dependencies": {
-    "jest-environment-jsdom": "^27.1.0"
+    "jest": "^27.4.4",
+    "autoprefixer": "^10.4.12",
+    "jest-environment-jsdom": "^27.1.0",
+    "live-server": "^1.2.2",
+    "postcss-cli": "^10.0.0"
   }
 }
