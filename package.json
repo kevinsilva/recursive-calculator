@@ -33,6 +33,7 @@
     "jest": "^27.4.4",
     "jest-environment-jsdom": "^27.1.0",
     "live-server": "^1.1.0",
-    "postcss-cli": "^10.0.0"
+    "postcss-cli": "^10.0.0",
+    "glob-parent": ">=5.1.2"
   }
 }
