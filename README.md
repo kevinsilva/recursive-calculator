@@ -1,10 +1,10 @@
 # Recursive Calculator
 
-![preview](img/recursive-calculator.gif)
+![preview](/img/recursive-calculator.gif)
 
 This calculator can perform calculations on unary and binary expressions written in Polish notation (operator is prefixed to operands). It can use either a recursion algorithm, or a single-pass algorithm to solve complex expressions where an operand is another expression.
 
-[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-success?style=flat-square&logo=codesandbox)](https://codesandbox.io/p/github/kevinsilva/recursive-calculator/csb-recursive?file=%2FREADME.md)
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-success?style=flat-square&logo=codesandbox)](https://codesandbox.io/p/github/kevinsilva/recursive-calculator/master?file=%2FREADME.md&workspace=%257B%2522activeFilepath%2522%253A%2522%252FREADME.md%2522%252C%2522openFiles%2522%253A%255B%2522%252FREADME.md%2522%255D%252C%2522sidebarPanel%2522%253A%2522EXPLORER%2522%252C%2522gitSidebarPanel%2522%253A%2522COMMIT%2522%252C%2522spaces%2522%253A%257B%2522clgf1galv000x3b6i76vi2j5j%2522%253A%257B%2522key%2522%253A%2522clgf1galv000x3b6i76vi2j5j%2522%252C%2522name%2522%253A%2522Default%2522%252C%2522devtools%2522%253A%255B%257B%2522type%2522%253A%2522PREVIEW%2522%252C%2522taskId%2522%253A%2522dev%2522%252C%2522port%2522%253A8080%252C%2522key%2522%253A%2522clgf1girp006m3b6i2v6wpamv%2522%252C%2522isMinimized%2522%253Afalse%257D%252C%257B%2522type%2522%253A%2522TASK_LOG%2522%252C%2522taskId%2522%253A%2522dev%2522%252C%2522key%2522%253A%2522clgf1ghwp00413b6isiz654ad%2522%252C%2522isMinimized%2522%253Afalse%257D%255D%257D%257D%252C%2522currentSpace%2522%253A%2522clgf1galv000x3b6i76vi2j5j%2522%252C%2522spacesOrder%2522%253A%255B%2522clgf1galv000x3b6i76vi2j5j%2522%255D%252C%2522hideCodeEditor%2522%253Afalse%257D)
 
 ## Implementation Details
 
@@ -75,8 +75,8 @@ const calculator = new CommandsManager(memoryManager, calcEngine);
 Create a new instance of the _DisplayController_, with an object that as the display's elements as values of the inherent properties.
 
 ```js
-const mainDisplay = document.querySelector(".display__main");
-const secondaryDisplay = document.querySelector(".display__secondary");
+const mainDisplay = document.querySelector('.display__main');
+const secondaryDisplay = document.querySelector('.display__secondary');
 
 const displayController = new DisplayController({
   elMain: mainDisplay,
@@ -88,36 +88,36 @@ The instance for the _NumpadController_, must have an object with the defined ke
 
 ```js
 const numpad = {
-  expID: "exp",
-  logID: "log",
-  sinID: "sin",
-  cosID: "cos",
-  ceilID: "ceil",
-  floorID: "floor",
-  roundID: "round",
-  absID: "abs",
-  addID: "add",
-  subtractID: "subtract",
-  divideID: "divide",
-  multiplyID: "multiply",
-  oneID: "one",
-  twoID: "two",
-  threeID: "three",
-  fourID: "four",
-  fiveID: "five",
-  sixID: "six",
-  sevenID: "seven",
-  eightID: "eight",
-  nineID: "nine",
-  zeroID: "zero",
-  clearAllID: "clearAll",
-  openID: "open",
-  closeID: "close",
-  exitID: "exit",
-  helpID: "help",
-  dotID: "dot",
-  equalID: "equal",
-  spaceID: "space",
+  expID: 'exp',
+  logID: 'log',
+  sinID: 'sin',
+  cosID: 'cos',
+  ceilID: 'ceil',
+  floorID: 'floor',
+  roundID: 'round',
+  absID: 'abs',
+  addID: 'add',
+  subtractID: 'subtract',
+  divideID: 'divide',
+  multiplyID: 'multiply',
+  oneID: 'one',
+  twoID: 'two',
+  threeID: 'three',
+  fourID: 'four',
+  fiveID: 'five',
+  sixID: 'six',
+  sevenID: 'seven',
+  eightID: 'eight',
+  nineID: 'nine',
+  zeroID: 'zero',
+  clearAllID: 'clearAll',
+  openID: 'open',
+  closeID: 'close',
+  exitID: 'exit',
+  helpID: 'help',
+  dotID: 'dot',
+  equalID: 'equal',
+  spaceID: 'space',
 };
 
 const numpadController = new NumpadController(numpad, (value) =>
